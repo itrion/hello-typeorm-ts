@@ -1,0 +1,8 @@
+{
+  "bail": true,
+  "reporter": "dot",
+  "require": [
+    "ts-node/register"
+  ],
+  "spec": "**/*.spec.ts"
+}
