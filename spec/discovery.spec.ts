@@ -1,8 +1,11 @@
 import "reflect-metadata";
 import {Connection, createConnection} from "typeorm";
 import {Buyer} from "../src/entity/Buyer";
+import {expect} from "chai";
 
 describe('Discovering TypeORM features', () => {
+    const firstName = "Timber";
+    const lastName = "Saw";
     let connection: Connection;
 
     before(async () => {
@@ -13,17 +16,18 @@ describe('Discovering TypeORM features', () => {
         await connection.close();
     });
 
+    afterEach(async () => {
+        await connection.manager.clear(Buyer);
+    });
+
     it('Inserting a new buyer into the database', async () => {
-        const buyer = new Buyer();
-        buyer.firstName = "Timber";
-        buyer.lastName = "Saw";
+        const buyer = new Buyer(firstName, lastName);
+
         await connection.manager.save(buyer);
-        console.log("Saved a new user with id: " + buyer.id);
 
-        console.log("Loading users from the database...");
         const users = await connection.manager.find(Buyer);
-        console.log("Loaded users: ", users);
-
-        console.log("Here you can setup and run express/koa/any other framework.");
+        expect(users.length).to.be.equal(1);
+        expect(users[0].firstName).to.be.equal(firstName);
+        expect(users[0].lastName).to.be.equal(lastName);
     });
 });
