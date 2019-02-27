@@ -4,7 +4,8 @@
   "description": "toy project for testing typeorm with mongo and graphql",
   "main": "src/index.ts",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "ts-node src/index.ts"
   },
   "keywords": [
     "typescript",
@@ -15,7 +16,6 @@
   "author": "Johan Sebastian Cortes Montenegro",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "11.9.5",
     "highlight.js": "9.14.2",
     "mongo": "0.1.0",
     "mongodb": "3.1.13",
@@ -25,8 +25,11 @@
   "devDependencies": {
     "@types/chai": "4.1.7",
     "@types/mocha": "5.2.6",
+    "@types/mongodb": "3.1.19",
+    "@types/node": "11.9.5",
     "chai": "4.2.0",
     "mocha": "6.0.2",
-    "ts-node": "8.0.2"
+    "ts-node": "8.0.2",
+    "typescript": "3.3.3333"
   }
 }
